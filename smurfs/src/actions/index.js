@@ -1,14 +1,8 @@
-// Let's build some action creators 😃
 import axios from 'axios';
 export const FETCH_DATA_START = 'FETCH_DATA_START';
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
 export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const ADD_SMURF = 'ADD_SMURF';
-
-/* 
-  Action Types Go Here!
-  Be sure to export each action type so you can pull it into your reducer
-*/
 
 export const getData = () => dispatch => {
   dispatch({ type: FETCH_DATA_START });
@@ -36,7 +30,6 @@ export const addSmurf = (smurf) => dispatch => {
     ///???ADD_SMURF_FAILURE???///
       });
 };
-
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
