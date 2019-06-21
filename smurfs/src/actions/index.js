@@ -18,16 +18,20 @@ export const getData = () => dispatch => {
   });
 };
 
+export const ADD_SMURF_START = 'ADD_SMURF_START';
+export const ADD_SMURF_SUCCESS = 'ADD_SMURF_SUCCESS';
+export const ADD_SMURF_FAILURE = 'ADD_SMURF_FAILURE';
+
 export const addSmurf = (smurf) => dispatch => {
-  dispatch({ type: ADD_SMURF, payload: smurf });
+  dispatch({ type: ADD_SMURF_START, payload: smurf });
   console.log('SMURF OBJECT HERE', smurf);
   axios.post('http://localhost:3333/smurfs', smurf)
   .then((res) => {
-    ///???ADD_SMURF_SUCCESS???///
+    dispatch({ type: ADD_SMURF_SUCCESS, payload: res.data });
       })
       .catch(function (err) {
         console.log('ERROR MESSAGE HERE',err);
-    ///???ADD_SMURF_FAILURE???///
+      dispatch({ type: ADD_SMURF_FAILURE, payload: err.response });
       });
 };
 

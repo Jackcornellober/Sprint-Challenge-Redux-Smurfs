@@ -1,5 +1,7 @@
 import {
-  ADD_SMURF,
+  ADD_SMURF_START,
+  ADD_SMURF_SUCCESS,
+  ADD_SMURF_FAILURE,
   FETCH_DATA_START,
   FETCH_DATA_SUCCESS,
   FETCH_DATA_FAILURE
@@ -48,11 +50,23 @@ function reducer(state = initialState, action) {
         error: action.payload
       };
   ///if ADD_SMURF comes through, we push the payload to our state's items array///
-      case ADD_SMURF:
+      case ADD_SMURF_START:
       return {
         ...state,
-        smurfs: [...state.smurfs, action.payload]
+        addingSmurf: true,
       };
+      case ADD_SMURF_SUCCESS:
+        return {
+          ...state,
+          addingSmurf: false,
+          smurfs: [...state.smurfs, action.payload]
+        };
+      case ADD_SMURF_FAILURE:
+        return {
+          ...state,
+          addingSmurf: false,
+          error: action.payload
+        }
     default:
       return state;
   }
